@@ -17,7 +17,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Магазин по продаже телефонов" />
+        app:title="Магазин по продаже телефонов"
+        app:subtitle="Нажмите на телефон из списка"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Выберите город:"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <RadioGroup
         android:id="@+id/cities"
@@ -31,23 +41,42 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Калининград"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
 
         <RadioButton
             android:id="@+id/rbAnswer2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Зеленоградск"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
 
     </RadioGroup>
+
+    <TextView
+        android:id="@+id/listName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Каталог телефонов:"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cities" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listName" />
 
     <Button
         android:id="@+id/priceList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="Прайс лист"
+        android:layout_marginBottom="10dp"
+        android:text="Редактировать каталог"
         app:layout_constraintBottom_toTopOf="@+id/saleStatistics"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -56,7 +85,7 @@
         android:id="@+id/saleStatistics"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:text="Статистика продаж"
         app:layout_constraintBottom_toTopOf="@+id/service"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,20 +95,10 @@
         android:id="@+id/service"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:text="Обратиться в сервис"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Выберите город:"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
