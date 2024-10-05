@@ -19,6 +19,29 @@
         app:layout_constraintTop_toTopOf="parent"
         app:title="Магазин по продаже телефонов" />
 
+    <RadioGroup
+        android:id="@+id/cities"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <RadioButton
+            android:id="@+id/rbAnswer1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Калининград"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/rbAnswer2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Зеленоградск"
+            android:textSize="20sp" />
+
+    </RadioGroup>
+
     <Button
         android:id="@+id/priceList"
         android:layout_width="wrap_content"
@@ -48,5 +71,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Выберите город:"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
