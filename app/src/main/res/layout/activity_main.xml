@@ -41,14 +41,14 @@
             android:id="@+id/koenig"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@+id/radioKoenig"
+            android:text="@string/radioKoenig"
             android:textSize="16sp" />
 
         <RadioButton
             android:id="@+id/zelik"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@+id/radioZelik"
+            android:text="@string/radioZelik"
             android:textSize="16sp" />
 
     </RadioGroup>
