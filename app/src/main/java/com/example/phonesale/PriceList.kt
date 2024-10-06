@@ -3,16 +3,19 @@ package com.example.phonesale
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ListView
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.snackbar.Snackbar
 
 class PriceList : AppCompatActivity() {
 
@@ -44,8 +47,8 @@ class PriceList : AppCompatActivity() {
 
         cities = findViewById(R.id.cities)
         koenig = findViewById(R.id.koenig)
-        koenig.isChecked = true
         zelik = findViewById(R.id.zelik)
+
         phoneCatalog = findViewById(R.id.phoneСatalog)
         phoneName = findViewById(R.id.phoneName)
         phonePrice = findViewById(R.id.phonePrice)
@@ -58,6 +61,7 @@ class PriceList : AppCompatActivity() {
         }
         phoneAdapter = PhoneAdapter(this, phoneList)
         phoneCatalog.adapter = phoneAdapter
+        koenig.isChecked = true
         filterPhoneList(Cities.КАЛИНИНГРАД)
 
         koenig.setOnClickListener {
@@ -68,7 +72,12 @@ class PriceList : AppCompatActivity() {
             filterPhoneList(Cities.ЗЕЛЕНОГРАДСК)
         }
 
-        addButton.setOnClickListener{
+        phoneCatalog.setOnItemClickListener { _, _, position, _ ->
+            val selectedPhone = phoneAdapter.getItem(position) as Phone
+            showDeleteDialog(selectedPhone)
+        }
+
+        addButton.setOnClickListener {
             val name = phoneName.text.toString()
             val price = phonePrice.text.toString()
             val city = if (koenig.isChecked) Cities.КАЛИНИНГРАД else Cities.ЗЕЛЕНОГРАДСК
@@ -89,6 +98,27 @@ class PriceList : AppCompatActivity() {
         }
     }
 
+    //override fun on
+
+    private fun showDeleteDialog(phone: Phone) {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Подтверждение удаления")
+        builder.setMessage("Удалить ${phone.name} из каталога города ${phone.city}?")
+        builder.setNegativeButton("Да") { dialog, _ ->
+            phoneList.remove(phone)
+            phoneAdapter.notifyDataSetChanged()
+            dialog.dismiss()
+            val resultIntent = Intent()
+            resultIntent.putExtra("updatedPhoneList", phoneList)
+            setResult(Activity.RESULT_OK, resultIntent)
+            finish()
+        }
+        builder.setPositiveButton("Нет") { dialog, _ ->
+            dialog.dismiss()
+        }
+        builder.create().show()
+    }
+
     private fun filterPhoneList(city: Cities) {
         val filteredList = phoneList.filter { it.city == city } as ArrayList<Phone>
         phoneAdapter.updateList(filteredList)
@@ -101,6 +131,7 @@ class PriceList : AppCompatActivity() {
                 finish()
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }

@@ -129,6 +129,8 @@ class MainActivity : AppCompatActivity() {
                 phoneList.clear()
                 phoneList.addAll(updatedList)
                 phoneAdapter.notifyDataSetChanged()
+                koenig.isChecked = true
+                filterPhoneList(Cities.КАЛИНИНГРАД)
             }
         }
     }
