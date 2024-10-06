@@ -3,7 +3,6 @@ package com.example.phonesale
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ListView
@@ -15,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.google.android.material.snackbar.Snackbar
 
 class PriceList : AppCompatActivity() {
 
@@ -49,10 +47,10 @@ class PriceList : AppCompatActivity() {
         koenig = findViewById(R.id.koenig)
         zelik = findViewById(R.id.zelik)
 
-        phoneCatalog = findViewById(R.id.phoneСatalog)
+        phoneCatalog = findViewById(R.id.phoneCatalog)
         phoneName = findViewById(R.id.phoneName)
         phonePrice = findViewById(R.id.phonePrice)
-        addButton = findViewById(R.id.add)
+        addButton = findViewById(R.id.edit)
 
         // Получаем список телефонов из MainActivity
         val receivedList = intent.getSerializableExtra("phoneList") as? ArrayList<Phone>

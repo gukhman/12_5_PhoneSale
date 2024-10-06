@@ -8,8 +8,6 @@ import android.view.View
 import android.widget.Button
 import android.widget.ListView
 import android.widget.RadioButton
-import android.widget.RadioGroup
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -21,7 +19,7 @@ import com.google.android.material.snackbar.Snackbar
 class MainActivity : AppCompatActivity() {
 
     private lateinit var toolbar: Toolbar
-    private lateinit var cities: RadioGroup
+
     private lateinit var koenig: RadioButton
     private lateinit var zelik: RadioButton
 
@@ -55,17 +53,16 @@ class MainActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        phoneCatalog = findViewById(R.id.phoneСatalog)
+        phoneCatalog = findViewById(R.id.phoneCatalog)
         phoneAdapter = PhoneAdapter(this, phoneList)
         phoneCatalog.adapter = phoneAdapter
 
-        cities = findViewById(R.id.cities)
         koenig = findViewById(R.id.koenig)
         koenig.isChecked = true
         filterPhoneList(Cities.КАЛИНИНГРАД)
         zelik = findViewById(R.id.zelik)
 
-        priceList = findViewById(R.id.add)
+        priceList = findViewById(R.id.edit)
         saleStatistics = findViewById(R.id.saleStatistics)
         service = findViewById(R.id.service)
 
@@ -96,6 +93,8 @@ class MainActivity : AppCompatActivity() {
 
         service.setOnClickListener {
             val intent = Intent(this, Service::class.java)
+            val phoneNames = phoneList.map { it.name }.distinct() as ArrayList<String>
+            intent.putExtra("phoneNames", phoneNames)
             startActivity(intent)
         }
 

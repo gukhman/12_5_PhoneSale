@@ -20,10 +20,10 @@
         app:title="Прайс лист" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/cityChange"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Выберите город:"
+        android:text="@string/priceCityChoiceText"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
@@ -33,20 +33,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/cityChange">
 
         <RadioButton
             android:id="@+id/koenig"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Калининград"
+            android:text="@string/radioKoenig"
             android:textSize="16sp" />
 
         <RadioButton
             android:id="@+id/zelik"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Зеленоградск"
+            android:text="@string/radioZelik"
             android:textSize="16sp" />
 
     </RadioGroup>
@@ -56,14 +56,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Каталог телефонов:"
+        android:text="@string/priceTitle"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cities" />
 
     <ListView
-        android:id="@+id/phoneСatalog"
+        android:id="@+id/phoneCatalog"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_marginTop="10dp"
@@ -77,11 +77,12 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:autofillHints=""
-        android:hint="Название"
+        android:hint="@string/pricePhoneNameHint"
         android:inputType="text"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/phonePrice"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TextFields" />
 
     <EditText
         android:id="@+id/phonePrice"
@@ -89,19 +90,20 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
         android:autofillHints=""
-        android:hint="Цена"
+        android:hint="@string/pricePhonePriceHint"
         android:inputType="text"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TextFields" />
 
     <Button
-        android:id="@+id/add"
+        android:id="@+id/edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="30dp"
-        android:text="Добавить"
+        android:text="@string/priceAdd"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

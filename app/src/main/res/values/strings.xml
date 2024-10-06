@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Phone Sale</string>
+    <string name="serviceListNameText">Выберите ваш телефон для обращения в сервис:</string>
+    <string name="priceAdd">Добавить</string>
+    <string name="radioKoenig">Калининград</string>
+    <string name="radioZelik">Зеленоградск</string>
+    <string name="priceTitle">Каталог телефонов:</string>
+    <string name="pricePhoneNameHint">Название</string>
+    <string name="pricePhonePriceHint">Цена</string>
+    <string name="priceCityChoiceText">Выберите город:</string>
+    <string name="mainEditBTN">Редактировать каталог</string>
+    <string name="mainSaleStatisticsBTN">Статистика продаж</string>
+    <string name="mainCityChangeText">Выберите город:</string>
+    <string name="mainBuyText">Нажмите для покупки:</string>
+    <string name="mainServiceText">Обратиться в сервис</string>
 </resources>
