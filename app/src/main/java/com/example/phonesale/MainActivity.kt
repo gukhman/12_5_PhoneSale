@@ -90,6 +90,7 @@ class MainActivity : AppCompatActivity() {
 
         saleStatistics.setOnClickListener {
             val intent = Intent(this, SaleStatistics::class.java)
+            intent.putExtra("phoneSales", phoneSales)
             startActivity(intent)
         }
 
