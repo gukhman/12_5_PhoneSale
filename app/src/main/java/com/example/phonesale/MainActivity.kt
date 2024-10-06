@@ -4,15 +4,19 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Button
 import android.widget.ListView
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         Phone("Xiaomi 14", "90000", Cities.КАЛИНИНГРАД),
         Phone("Xiaomi 14", "87000", Cities.ЗЕЛЕНОГРАДСК)
     )
+    private val phoneSales = arrayListOf<Phone>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,6 +77,11 @@ class MainActivity : AppCompatActivity() {
             filterPhoneList(Cities.ЗЕЛЕНОГРАДСК)
         }
 
+        phoneCatalog.setOnItemClickListener { _, _, position, _ ->
+            val selectedPhone = phoneAdapter.getItem(position) as Phone
+            showPurchaseDialog(selectedPhone)
+        }
+
         priceList.setOnClickListener {
             val intent = Intent(this, PriceList::class.java)
             intent.putExtra("phoneList", phoneList)
@@ -88,6 +98,22 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+    }
+
+    private fun showPurchaseDialog(phone: Phone) {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Подтверждение покупки")
+        builder.setMessage("Покупаем ${phone.name} за ${phone.price}?")
+        builder.setNegativeButton("Да") { dialog, _ ->
+            phoneSales.add(phone)
+            dialog.dismiss()
+            val rootView = findViewById<View>(R.id.main)
+            Snackbar.make(rootView, "Телефон куплен!", Snackbar.LENGTH_SHORT).show()
+        }
+        builder.setPositiveButton("Нет") { dialog, _ ->
+            dialog.dismiss()
+        }
+        builder.create().show()
     }
 
     private fun filterPhoneList(city: Cities) {

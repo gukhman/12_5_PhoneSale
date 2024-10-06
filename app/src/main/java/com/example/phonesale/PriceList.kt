@@ -1,5 +1,7 @@
 package com.example.phonesale
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -42,6 +44,7 @@ class PriceList : AppCompatActivity() {
 
         cities = findViewById(R.id.cities)
         koenig = findViewById(R.id.koenig)
+        koenig.isChecked = true
         zelik = findViewById(R.id.zelik)
         phoneCatalog = findViewById(R.id.phoneСatalog)
         phoneName = findViewById(R.id.phoneName)
@@ -55,10 +58,40 @@ class PriceList : AppCompatActivity() {
         }
         phoneAdapter = PhoneAdapter(this, phoneList)
         phoneCatalog.adapter = phoneAdapter
+        filterPhoneList(Cities.КАЛИНИНГРАД)
+
+        koenig.setOnClickListener {
+            filterPhoneList(Cities.КАЛИНИНГРАД)
+        }
+
+        zelik.setOnClickListener {
+            filterPhoneList(Cities.ЗЕЛЕНОГРАДСК)
+        }
 
         addButton.setOnClickListener{
+            val name = phoneName.text.toString()
+            val price = phonePrice.text.toString()
+            val city = if (koenig.isChecked) Cities.КАЛИНИНГРАД else Cities.ЗЕЛЕНОГРАДСК
 
+            if (name.isNotEmpty() && price.isNotEmpty()) {
+                val newPhone = Phone(name, price, city)
+                phoneList.add(newPhone)
+                phoneAdapter.notifyDataSetChanged()
+
+                phoneName.text.clear()
+                phonePrice.text.clear()
+
+                val resultIntent = Intent()
+                resultIntent.putExtra("updatedPhoneList", phoneList)
+                setResult(Activity.RESULT_OK, resultIntent)
+                finish()
+            }
         }
+    }
+
+    private fun filterPhoneList(city: Cities) {
+        val filteredList = phoneList.filter { it.city == city } as ArrayList<Phone>
+        phoneAdapter.updateList(filteredList)
     }
 
     override fun onOptionsItemSelected(item: android.view.MenuItem): Boolean {
