@@ -37,14 +37,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <RadioButton
-            android:id="@+id/rbAnswer1"
+            android:id="@+id/koenig"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Калининград"
             android:textSize="16sp" />
 
         <RadioButton
-            android:id="@+id/rbAnswer2"
+            android:id="@+id/zelik"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Зеленоградск"
@@ -64,6 +64,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cities" />
 
     <ListView
+        android:id="@+id/phoneСatalog"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_marginTop="10dp"
@@ -72,7 +73,7 @@
         app:layout_constraintTop_toBottomOf="@+id/listName" />
 
     <Button
-        android:id="@+id/priceList"
+        android:id="@+id/add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
